@@ -730,6 +730,7 @@ public class Pokedex {
             "721,volcanion,721,17,1950"};
 
     private ArrayList<Pokemon> mPokemons;
+        private int mPokemonIndex = 0;
 
     public Pokedex() {
         mPokemons = new ArrayList<>();
@@ -746,6 +747,12 @@ public class Pokedex {
         return mPokemons.subList(0, count);
     }
 
+        public Pokemon getPokemon() {
+                mPokemonIndex = mPokemonIndex % mPokemons.size();
+                Pokemon pokemon =  mPokemons.get(mPokemonIndex);
+                mPokemonIndex++;
+                return pokemon;
+        }
 
     public ArrayList<Pokemon> getPokemons() {
         return mPokemons;
