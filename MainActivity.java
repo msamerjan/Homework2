@@ -9,6 +9,8 @@ import android.widget.AdapterView;
  * Created by maiaphoebedylansamerjan on 2/18/16.
  */
 public class MainActivity extends AppCompatActivity {
+    PokemonArrayAdapter Adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onClick(View view){
+    public void onClick(AdapterView<?> parent, View view, int position, long id){
     }
 
 
