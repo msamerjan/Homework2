@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by maiaphoebedylansamerjan on 2/18/16.
  */
@@ -18,10 +20,10 @@ public class PokemonDetailView extends AppCompatActivity {
         setContentView(R.layout.activity_pokemon_detail_view);
         Pokemon = getIntent().getParcelableExtra(ARG_POKEMON);
 
-        TextView nameTextView = (TextView) findViewById(R.id.activity_pokemon_detail_name_textview);
-        TextView heightTextView = (TextView) findViewById(R.id.activity_pokemon_detail_height_textview);
-        TextView weightTextView = (TextView) findViewById(R.id.activity_pokemon_detail_weight_textview);
-        ImageView pokemonImageView = (ImageView) findViewById(R.id.activity_pokemon_detail_imageview);
+        TextView nameTextView = (TextView) findViewById(R.id.activity_detail_pokemon_name);
+        TextView heightTextView = (TextView) findViewById(R.id.activity_height_number_detail);
+        TextView weightTextView = (TextView) findViewById(R.id.activity_weight_number_detail);
+        ImageView pokemonImageView = (ImageView) findViewById(R.id.activity_detail_imageview);
 
         Picasso.with(this).load(Pokemon.getImageUrl()).fit().centerInside().into(pokemonImageView);
 
