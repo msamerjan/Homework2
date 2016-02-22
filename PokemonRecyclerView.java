@@ -5,20 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.ProgressBar;
 
 
 /**
  * Created by maiaphoebedylansamerjan on 2/19/16.
  */
-public class PokemonRecyclerView extends AppCompatActivity implements PokemonRecyclerViewAdapter.OnPokemonRowClickListener, View.OnClickListener{
+public class PokemonRecyclerView extends AppCompatActivity implements PokemonRecyclerViewAdapter.OnPokemonRowClickListener{
     public static final int ID_POKEMON=0;
     private static final String TAG="Pokemon";
     private RecyclerView RecyclerView;
     private Pokedex Pokedex;
     private PokemonRecyclerViewAdapter Adapter;
-    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedPokemonState) {
@@ -32,11 +29,9 @@ public class PokemonRecyclerView extends AppCompatActivity implements PokemonRec
         Adapter= new PokemonRecyclerViewAdapter(Pokedex.getPokemon(),this);
         RecyclerView.setAdapter(Adapter);
 
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar);
-        progressBar.setVisibility(View.VISIBLE);
 
 
-        final String url="http://pokeapi.co/api/v2/pokemon/ID_NUMBER/ ";
+        final String url="http://pokeapi.co/api/v2/pokemon/"+ID_POKEMON;
         new PokemonAsyncTask().execute(url);
 
     }
@@ -56,11 +51,6 @@ public class PokemonRecyclerView extends AppCompatActivity implements PokemonRec
         Intent intent = new Intent(PokemonRecyclerView.this, PokemonDetailView.class);
         intent.putExtra(PokemonDetailView.ARG_POKEMON, pokemon);
         startActivityForResult(intent, ID_POKEMON);
-    }
-
-    @Override
-    public void onClick(View v) {
-
     }
 
 }

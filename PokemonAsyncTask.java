@@ -19,7 +19,7 @@ import java.net.URL;
 public class PokemonAsyncTask extends AsyncTask<String,Integer,JSONArray> {
 
     public static final String TAG = PokemonAsyncTask.class.getSimpleName();
-
+Pokemon currentPokemon;
 
 
 @Override
@@ -36,10 +36,9 @@ protected JSONArray doInBackground(String... params) {
         if (params.length == 0) {
         return null;
         }
-        String userId = params[0];
         HttpURLConnection urlConnection;
         try {
-        URL url = new URL("https://api.github.com/users/" + userId + "/subscriptions");
+        URL url = new URL("http://pokeapi.co/api/v2/pokemon/"+currentPokemon.getID());
         urlConnection = (HttpURLConnection) url.openConnection();
         InputStreamReader inputStream = new InputStreamReader(urlConnection.getInputStream());
         BufferedReader reader = new BufferedReader(inputStream);
@@ -85,7 +84,7 @@ protected void onPostExecute(JSONArray jsonArray) {
         JSONObject subscription = jsonArray.getJSONObject(i);
         JSONObject owner = subscription.getJSONObject("owner");
 
-        Log.d(TAG, owner.getString("login") + " owns " + subscription.getString("name"));
+        Log.d(TAG, owner.getString("Pokemon") + " has " + subscription.getString("number"));
         } catch (JSONException e) {
         Log.e(TAG, e.getLocalizedMessage());
         }

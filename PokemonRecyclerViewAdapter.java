@@ -1,13 +1,14 @@
 package edu.lclark.homework2;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
-import android.support.v7.widget.RecyclerView;
 
 /**
  * Created by maiaphoebedylansamerjan on 2/19/16.
@@ -70,6 +71,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
     static class PokemonViewHolder extends RecyclerView.ViewHolder {
 
         TextView name, id, weight, height;
+        ImageView pokemon;
         View fullView;
 
         public PokemonViewHolder(View itemView) {
@@ -79,6 +81,7 @@ public class PokemonRecyclerViewAdapter extends RecyclerView.Adapter<PokemonRecy
             id = (TextView) itemView.findViewById(R.id.row_pokemon_id_textview);
             weight = (TextView) itemView.findViewById(R.id.row_pokemon_weight_textview);
             height = (TextView) itemView.findViewById(R.id.row_pokemon_height_textview);
+            pokemon=(ImageView) itemView.findViewById(R.id.thumbnail);
         }
     }
 }
